@@ -1,9 +1,12 @@
 pipeline {
     agent any 
     stages {
-        stage('Stage 1') {
+        stage('Build') {
             steps {
-                echo 'Hi Eddie!' 
+                echo 'Find latest release tag'
+                sh '.\find_latest.sh'
+                echo 'Build a docker image'
+                sh '.\Dockerfile'
             }
         }
     }
